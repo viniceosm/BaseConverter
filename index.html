@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>BaseConverter</title>
+		<link href="css/bootstrap.min.css" rel="stylesheet">
+		<link href="css/material-kit.css" rel="stylesheet">
+		<link href="css/material-kit.css.map" rel="stylesheet">
+		<link href="css/master.css" rel="stylesheet">
+
+		<script src="js/master.js"></script>
+		<script src="js/jquery.min.js" type="text/javascript"></script>
+		<script src="js/bootstrap.min.js" type="text/javascript"></script>
+		<script src="js/material.min.js"></script>
+		<script src="js/material-kit.js" type="text/javascript"></script>
+
+		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+		<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" />
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+	</head>
+	<body style="background-image: url('img/bg2.jpeg');">
+		<div class="container-fluid">
+			<nav class="navbar navbar-primary navbar-fixed-top">
+				<div class="container">
+					<div class="navbar-header">
+						<a class="navbar-brand">BaseConverter</a>
+					</div>
+				</div>
+			</nav>
+
+			<div class="wrapper">
+				<div class="header">
+					<!-- espaço para o nav não ficar em cima da proxima div -->
+				</div>
+
+
+				<div class="row top30">
+					<div class="col col-md-6 col-md-offset-3">
+						<div class="panel">
+							<div class="panel-body">
+								<div class="row">
+									<div class="col col-md-5">
+										<div class="form-group label-floating">
+											<label class="control-label">Digite o número</label>
+											<input type="number" id="txtNumero" min="0" class="form-control" autofocus>
+										</div>
+									</div>
+								</div>
+
+								<div class="row">
+									<div class="col col-xs-5 col-md-5">
+										Entrada:
+										<radioBoot name="rdBaseEntrada" id="Decimal" label="Decimal" checked="true"></radioBoot>
+										<radioBoot name="rdBaseEntrada" id="Hexadecimal" label="Hexadecimal"></radioBoot>
+										<radioBoot name="rdBaseEntrada" id="Octal" label="Octal"></radioBoot>
+										<radioBoot name="rdBaseEntrada" id="Binario" label="Binário"></radioBoot>
+									</div>
+									<div class="col col-xs-5 col-md-5">
+										Saída:
+										<radioBoot name="rdBaseSaida" id="Decimal" label="Decimal"></radioBoot>
+										<radioBoot name="rdBaseSaida" id="Hexadecimal" label="Hexadecimal"></radioBoot>
+										<radioBoot name="rdBaseSaida" id="Octal" label="Octal"></radioBoot>
+										<radioBoot name="rdBaseSaida" id="Binario" label="Binário" checked="true"></radioBoot>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="row top7">
+					<div id="colResultado" class="col col-md-6 col-md-offset-3" style="display:none;">
+						<div class="panel">
+							<div class="panel-head">
+								<div class="row">
+									<div class="col col-md-12 text-center">
+										<h4>Resultado</h4>
+									</div>
+								</div>
+							</div>
+							<div class="panel-body">
+								<div class="row">
+									<div class="col col-md-12 text-center">
+										<span id="txtResultado"></span>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
