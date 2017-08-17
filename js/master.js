@@ -1,13 +1,24 @@
 window.onload = ()=>{
+	document.querySelectorAll('input[id^="txtNum"]').forEach((input)=>{
+		input.addEventListener('input', (e)=>{
+			limparCamposCasoVazio(e.target);
+		}, false);
+	});
+
 	document.querySelector('#txtNumDecimal').oninput = (e)=>{
-		document.querySelector('#txtNumBinario').value = decimalParaBinario(parseInt(e.target.value));
+		if(e.target.value!=''){
+			document.querySelector('#txtNumBinario').value = decimalParaBinario(parseInt(e.target.value));
+		}
 	};
 }
-const transformarNumero = (numero)=>{
-	if(numero!=''){
-		numero = parseInt(numero);
+
+const limparCamposCasoVazio = (input)=>{
+	if(input.value==""){
+		document.querySelectorAll('input[id^="txtNum"]').forEach((input)=>{
+			input.value = "";
+		});
 	}
-};
+}
 
 //ENTRADA DECIMAL
 const decimalParaHexadecimal = (numero, nomeDessaFuncao)=>{
