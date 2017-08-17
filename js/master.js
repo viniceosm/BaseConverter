@@ -7,33 +7,8 @@ window.onload = ()=>{
 	});
 }
 const transformarNumero = (numero)=>{
-	var radioEntradaMarcado = document.querySelector('input[name="rdBaseEntrada"]:checked');
-	var baseEntrada = radioEntradaMarcado.id.toLowerCase();
-
-	var radioSaidaMarcado = document.querySelector('input[name="rdBaseSaida"]:checked');
-	var baseSaida = radioSaidaMarcado.id;
-
-	var txtResultado = document.querySelector('#txtResultado');
-	var resultado;
-
 	if(numero!=''){
 		numero = parseInt(numero);
-
-		var funcaoTransformarChamar = `${baseEntrada}Para${baseSaida}(${numero}, '${baseEntrada}Para${baseSaida}');`;
-		var funcaoChamar = `
-			try{
-				${funcaoTransformarChamar}
-			}catch(e){
-				console.dir(e.message);
-			}
-		`;
-		resultado = eval(funcaoChamar);
-
-		txtResultado.innerHTML = `${resultado}`;
-		document.querySelector('#colResultado').style.display = '';
-	}else{
-		txtResultado.innerHTML = ``;
-		document.querySelector('#colResultado').style.display = 'none';
 	}
 };
 
@@ -97,29 +72,4 @@ const binarioParaHexadecimal = (numero, nomeDessaFuncao)=>{
 }
 const binarioParaOctal = (numero, nomeDessaFuncao)=>{
 	console.log(nomeDessaFuncao);
-}
-
-
-
-function renderizarRadios(){
-	[].forEach.call(document.querySelectorAll('radioBoot'), (radio)=>{
-		var nameRadio = radio.getAttribute(`name`);
-		var labelRadio = radio.getAttribute(`label`);
-		var checkedRadio = radio.getAttribute(`checked`);
-		var idRadio = radio.getAttribute(`id`);
-		radio.innerHTML = renderizarRadio(idRadio, nameRadio, labelRadio, checkedRadio);
-	});
-}
-
-function renderizarRadio(id, name, label, isChecked){
-	var atributoChecked = isChecked == null ? '' : `checked="${isChecked}"`;
-	var atributoId = id == null ? '' : `id="${id}"`;
-
-	return `<div class="radio">
-				<label>
-					<input type="radio" ${atributoId} name="${name}" ${atributoChecked}>
-					<span class="circle"></span><span class="check"></span>
-					<div id="label">${label}</div>
-				</label>
-			</div>`;
 }
