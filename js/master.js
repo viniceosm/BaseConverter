@@ -1,10 +1,7 @@
 window.onload = ()=>{
-	renderizarRadios();
-
-	var txtNumero = document.querySelector('#txtNumero');
-	txtNumero.addEventListener('input', ()=>{
-		transformarNumero(txtNumero.value);
-	});
+	document.querySelector('#txtNumDecimal').oninput = (e)=>{
+		document.querySelector('#txtNumBinario').value = decimalParaBinario(parseInt(e.target.value));
+	};
 }
 const transformarNumero = (numero)=>{
 	if(numero!=''){
