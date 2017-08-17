@@ -8,6 +8,7 @@ window.onload = ()=>{
 	document.querySelector('#txtNumDecimal').oninput = (e)=>{
 		if(e.target.value!=''){
 			document.querySelector('#txtNumBinario').value = decimalParaBinario(parseInt(e.target.value));
+			document.querySelector('#txtNumHexadecimal').value = decimalParaHexadecimal(parseInt(e.target.value));
 		}
 	};
 }
@@ -21,8 +22,19 @@ const limparCamposCasoVazio = (input)=>{
 }
 
 //ENTRADA DECIMAL
-const decimalParaHexadecimal = (numero, nomeDessaFuncao)=>{
-	console.log(nomeDessaFuncao);
+const decimalParaHexadecimal = (numero)=>{
+	var arrayLetras=["0","1","2","3","4","5","6","7","8","9","A","B","C","D","E","F"];
+	var arrayNumero=[], mod;
+
+	while(numero!=0){
+		mod = Math.trunc(numero%16);
+		arrayNumero.push((mod > 9 ? arrayLetras[mod] : mod));
+		
+		numero = Math.trunc(numero/16);
+	};
+
+	var resultado = arrayNumero.reverse().join('');
+	return resultado == '' ? 0 : resultado;
 }
 
 const decimalParaOctal = (numero, nomeDessaFuncao)=>{
