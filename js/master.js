@@ -12,6 +12,11 @@ window.onload = ()=>{
 			document.querySelector('#txtNumOctal').value = decimalParaOctal(parseInt(e.target.value));
 		}
 	};
+	document.querySelector('#txtNumHexadecimal').oninput = (e)=>{
+		if(e.target.value!=''){
+			document.querySelector('#txtNumDecimal').value = hexadecimalParaDecimal((e.target.value));
+		}
+	};
 }
 
 var arrayLetras=["0","1","2","3","4","5","6","7","8","9","A","B","C","D","E","F"];
@@ -73,8 +78,35 @@ const decimalParaBinario = (numero)=>{
 }
 
 //ENTRADA HEXADECIMAL
-const hexadecimalParaDecimal = (numero, nomeDessaFuncao)=>{
-	console.log(nomeDessaFuncao);
+const hexadecimalParaDecimal = (numero)=>{
+	var numeroSeparado = numero.split('');
+	var numeroExpoente= [];
+	var indiceLetra;
+	var numeroSomado = 0;
+	
+	numeroSeparado.forEach((numeroAtual, i)=>{
+		
+		if(isNaN(numeroAtual)){
+			
+			indiceLetra = arrayLetras.join('').indexOf(numeroAtual.toUpperCase());
+			
+			numeroSeparado[i] = indiceLetra;
+			
+		}else{
+			
+			numeroSeparado[i] = parseInt(numeroAtual);
+		}
+	});
+	
+	for(var i = numero.length-1;i>=0; i--){
+		numeroExpoente.push(i);	
+	}
+	
+	for(var i = 0;i<numero.length;i++){
+		numeroSomado += numeroSeparado[i]*16**numeroExpoente[i];
+	}
+
+	return numeroSomado;
 }
 
 const hexadecimalParaOctal = (numero, nomeDessaFuncao)=>{
