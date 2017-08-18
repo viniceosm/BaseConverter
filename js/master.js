@@ -9,9 +9,12 @@ window.onload = ()=>{
 		if(e.target.value!=''){
 			document.querySelector('#txtNumBinario').value = decimalParaBinario(parseInt(e.target.value));
 			document.querySelector('#txtNumHexadecimal').value = decimalParaHexadecimal(parseInt(e.target.value));
+			document.querySelector('#txtNumOctal').value = decimalParaOctal(parseInt(e.target.value));
 		}
 	};
 }
+
+var arrayLetras=["0","1","2","3","4","5","6","7","8","9","A","B","C","D","E","F"];
 
 const limparCamposCasoVazio = (input)=>{
 	if(input.value==""){
@@ -23,13 +26,12 @@ const limparCamposCasoVazio = (input)=>{
 
 //ENTRADA DECIMAL
 const decimalParaHexadecimal = (numero)=>{
-	var arrayLetras=["0","1","2","3","4","5","6","7","8","9","A","B","C","D","E","F"];
 	var arrayNumero=[], mod;
 
 	while(numero!=0){
 		mod = Math.trunc(numero%16);
 		arrayNumero.push((mod > 9 ? arrayLetras[mod] : mod));
-		
+
 		numero = Math.trunc(numero/16);
 	};
 
@@ -37,8 +39,21 @@ const decimalParaHexadecimal = (numero)=>{
 	return resultado == '' ? 0 : resultado;
 }
 
-const decimalParaOctal = (numero, nomeDessaFuncao)=>{
-	console.log(nomeDessaFuncao);
+const decimalParaOctal = (numero)=>{
+	var arrayNumero=[], mod;
+
+	do{
+		mod = Math.trunc(numero%8);
+		arrayNumero.push(mod);
+
+		numero = numero/8;
+	}while(numero>8);
+
+	mod = Math.trunc(numero%8);
+	arrayNumero.push(mod);
+
+	var resultado = arrayNumero.reverse().join('');
+	return resultado == '' ? numero : resultado;
 }
 
 const decimalParaBinario = (numero)=>{
