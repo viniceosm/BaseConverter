@@ -26,6 +26,13 @@ window.onload = ()=>{
 		}
 	};
 
+
+	document.querySelector('#txtNumBinario').oninput = (e)=>{
+		if(e.target.value!=''){
+			document.querySelector('#txtNumDecimal').value = binarioParaDecimal((e.target.value));
+		}
+	};
+
 }
 
 var arrayLetras=["0","1","2","3","4","5","6","7","8","9","A","B","C","D","E","F"];
@@ -185,9 +192,21 @@ const octalParaHexadecimal = (numero, nomeDessaFuncao)=>{
 }
 
 //ENTRADA BINARIO
-const binarioParaDecimal = (numero, nomeDessaFuncao)=>{
-	console.log(nomeDessaFuncao);
+const binarioParaDecimal = (numero)=>{
+	var numeroSeparado = numero.split('');
+	var numeroSomado = 0;
+
+	for(var i = 0;i<numero.length;i++){
+		console.log("numeroSomado antes: ", numeroSomado);
+		console.log("numeroSeparado: ", numeroSeparado[i]);
+		numeroSomado *= 2+parseInt(numeroSeparado[i]);
+
+		console.log("numeroSomado depois: ", numeroSomado);
+	}
+
+	return numeroSomado;
 }
+
 const binarioParaHexadecimal = (numero, nomeDessaFuncao)=>{
 	console.log(nomeDessaFuncao);
 }
