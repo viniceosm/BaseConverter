@@ -121,7 +121,7 @@ const hexadecimalParaDecimal = (numero)=>{
 }
 
 const hexadecimalParaOctal = (numero, nomeDessaFuncao)=>{
-	console.log(nomeDessaFuncao);
+	//Fazer Binario para Octal primeiro
 }
 
 const hexadecimalParaBinario = (numero, nomeDessaFuncao)=>{
@@ -192,4 +192,21 @@ const binarioParaHexadecimal = (numero, nomeDessaFuncao)=>{
 }
 const binarioParaOctal = (numero, nomeDessaFuncao)=>{
 	console.log(nomeDessaFuncao);
+}
+
+//exemplo: console.log(separarCasas('OJOAO1234VINI', 4));
+//irá retornar ["O", "JOAO", "1234", "VINI"]
+const separarCasas = (numero, casas)=>{
+	var numeroSeparado = [];
+
+	for(var i=0; i<numero.length; i++){
+		numeroSeparado.push(numero.substring(numero.length-casas*(i+1),numero.length-casas*i));
+
+		if(numero.length-casas*(i+1)<=0){
+			break;
+		}
+	}
+	numeroSeparado = numeroSeparado.reverse();
+
+	return numeroSeparado;
 }
