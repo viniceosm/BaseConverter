@@ -13,3 +13,5 @@
   - Hexadecimal
   - Octal
   - Binário
+
+Grupo: Mateus Gadotti e Vinicius Miiller
