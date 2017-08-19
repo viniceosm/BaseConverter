@@ -16,6 +16,7 @@ window.onload = ()=>{
 		if(e.target.value!=''){
 			document.querySelector('#txtNumDecimal').value = hexadecimalParaDecimal((e.target.value));
 			document.querySelector('#txtNumBinario').value = hexadecimalParaBinario((e.target.value));
+			document.querySelector('#txtNumOctal').value = hexadecimalParaOctal((e.target.value));
 		}
 	};
 
@@ -128,11 +129,17 @@ const hexadecimalParaDecimal = (numero)=>{
 	//teste
 }
 
-const hexadecimalParaOctal = (numero, nomeDessaFuncao)=>{
-	//Fazer Binario para Octal primeiro
+const hexadecimalParaOctal = (numero)=>{
+	numero = hexadecimalParaBinario(numero);
+	var numeroSeparado = separarCasas(numero, 3);
+
+	numeroSeparado.forEach((numeroAtual, i)=>{
+		numeroSeparado[i] = binarioParaOctal(numeroSeparado[i]);
+	});
+	return numeroSeparado.join('');
 }
 
-const hexadecimalParaBinario = (numero, nomeDessaFuncao)=>{
+const hexadecimalParaBinario = (numero)=>{
 	var numeroSeparado = numero.split('');
 	var indiceLetra;
 
@@ -169,7 +176,7 @@ const octalParaDecimal = (numero)=>{
 
 }
 
-const octalParaBinario = (numero, nomeDessaFuncao)=>{
+const octalParaBinario = (numero)=>{
 	var numeroSeparado = numero.split('');
 	var indiceLetra;
 
