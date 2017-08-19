@@ -30,6 +30,7 @@ window.onload = ()=>{
 	document.querySelector('#txtNumBinario').oninput = (e)=>{
 		if(e.target.value!=''){
 			document.querySelector('#txtNumDecimal').value = binarioParaDecimal((e.target.value));
+			document.querySelector('#txtNumOctal').value = binarioParaOctal((e.target.value));
 		}
 	};
 
@@ -179,7 +180,8 @@ const octalParaBinario = (numero, nomeDessaFuncao)=>{
 			numeroSeparado[i] = decimalParaBinario(indiceLetra);
 		}else{
 			numeroSeparado[i] = decimalParaBinario(parseInt(numeroAtual));
-		}if(i>0){
+		}
+		if(i>0){
 			numeroSeparado[i] = numeroSeparado[i].toString().padStart(3, '0');
 		}
 	});
@@ -206,8 +208,13 @@ const binarioParaDecimal = (numero)=>{
 const binarioParaHexadecimal = (numero, nomeDessaFuncao)=>{
 	console.log(nomeDessaFuncao);
 }
-const binarioParaOctal = (numero, nomeDessaFuncao)=>{
-	console.log(nomeDessaFuncao);
+const binarioParaOctal = (numero)=>{
+	var numeroSeparado = separarCasas(numero, 3);
+
+	numeroSeparado.forEach((numeroAtual, i)=>{
+		numeroSeparado[i] = binarioParaDecimal(numeroSeparado[i]);
+	});
+	return numeroSeparado.join('');
 }
 
 //exemplo: console.log(separarCasas('OJOAO1234VINI', 4));
