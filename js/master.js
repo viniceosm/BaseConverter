@@ -40,6 +40,7 @@ const limparCamposCasoVazio = (input)=>{
 const decimalParaHexadecimal = (numero)=>{
 	var arrayNumero=[], mod;
 
+//teste
 	while(numero!=0){
 		mod = Math.trunc(numero%16);
 		arrayNumero.push((mod > 9 ? arrayLetras[mod] : mod));
@@ -114,6 +115,7 @@ const hexadecimalParaDecimal = (numero)=>{
 	}
 
 	return numeroSomado;
+	//teste
 }
 
 const hexadecimalParaOctal = (numero, nomeDessaFuncao)=>{
