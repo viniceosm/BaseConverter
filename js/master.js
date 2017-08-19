@@ -15,6 +15,7 @@ window.onload = ()=>{
 	document.querySelector('#txtNumHexadecimal').oninput = (e)=>{
 		if(e.target.value!=''){
 			document.querySelector('#txtNumDecimal').value = hexadecimalParaDecimal((e.target.value));
+			document.querySelector('#txtNumBinario').value = hexadecimalParaBinario((e.target.value));
 		}
 	};
 
@@ -91,25 +92,25 @@ const hexadecimalParaDecimal = (numero)=>{
 	var numeroExpoente= [];
 	var indiceLetra;
 	var numeroSomado = 0;
-	
+
 	numeroSeparado.forEach((numeroAtual, i)=>{
-		
+
 		if(isNaN(numeroAtual)){
-			
+
 			indiceLetra = arrayLetras.join('').indexOf(numeroAtual.toUpperCase());
-			
+
 			numeroSeparado[i] = indiceLetra;
-			
+
 		}else{
-			
+
 			numeroSeparado[i] = parseInt(numeroAtual);
 		}
 	});
-	
+
 	for(var i = numero.length-1;i>=0; i--){
-		numeroExpoente.push(i);	
+		numeroExpoente.push(i);
 	}
-	
+
 	for(var i = 0;i<numero.length;i++){
 		numeroSomado += numeroSeparado[i]*16**numeroExpoente[i];
 	}
@@ -123,7 +124,20 @@ const hexadecimalParaOctal = (numero, nomeDessaFuncao)=>{
 }
 
 const hexadecimalParaBinario = (numero, nomeDessaFuncao)=>{
-	console.log(nomeDessaFuncao);
+	var numeroSeparado = numero.split('');
+	var indiceLetra;
+
+	numeroSeparado.forEach((numeroAtual, i)=>{
+		if(isNaN(numeroAtual)){
+			indiceLetra = arrayLetras.join('').indexOf(numeroAtual.toUpperCase());
+
+			numeroSeparado[i] = decimalParaBinario(indiceLetra);
+		}else{
+			numeroSeparado[i] = decimalParaBinario(parseInt(numeroAtual));
+		}
+	});
+
+	return numeroSeparado.join('');
 }
 
 //ENTRADA OCTAL
@@ -133,9 +147,9 @@ const octalParaDecimal = (numero)=>{
 	var numeroSomado = 0;
 
 	for(var i = numero.length-1;i>=0; i--){
-		numeroExpoente.push(i);	
+		numeroExpoente.push(i);
 	}
-	
+
 	for(var i = 0;i<numero.length;i++){
 		numeroSomado += numeroSeparado[i]*8**numeroExpoente[i];
 	}
