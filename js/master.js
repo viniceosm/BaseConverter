@@ -172,6 +172,8 @@ const octalParaBinario = (numero, nomeDessaFuncao)=>{
 			numeroSeparado[i] = decimalParaBinario(indiceLetra);
 		}else{
 			numeroSeparado[i] = decimalParaBinario(parseInt(numeroAtual));
+		}if(i>0){
+			numeroSeparado[i] = numeroSeparado[i].toString().padStart(4, '0');
 		}
 	});
 
