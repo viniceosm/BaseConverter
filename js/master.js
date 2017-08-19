@@ -135,8 +135,10 @@ const hexadecimalParaBinario = (numero, nomeDessaFuncao)=>{
 		}else{
 			numeroSeparado[i] = decimalParaBinario(parseInt(numeroAtual));
 		}
+		if(i>0){
+			numeroSeparado[i] = numeroSeparado[i].toString().padStart(4, '0');
+		}
 	});
-
 	return numeroSeparado.join('');
 }
 
