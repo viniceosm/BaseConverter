@@ -17,6 +17,13 @@ window.onload = ()=>{
 			document.querySelector('#txtNumDecimal').value = hexadecimalParaDecimal((e.target.value));
 		}
 	};
+
+	document.querySelector('#txtNumOctal').oninput = (e)=>{
+		if(e.target.value!=''){
+			document.querySelector('#txtNumDecimal').value = octalParaDecimal((e.target.value));
+		}
+	};
+
 }
 
 var arrayLetras=["0","1","2","3","4","5","6","7","8","9","A","B","C","D","E","F"];
@@ -118,8 +125,21 @@ const hexadecimalParaBinario = (numero, nomeDessaFuncao)=>{
 }
 
 //ENTRADA OCTAL
-const octalParaDecimal = (numero, nomeDessaFuncao)=>{
-	console.log(nomeDessaFuncao);
+const octalParaDecimal = (numero)=>{
+	var numeroSeparado = numero.split('');
+	var numeroExpoente = [];
+	var numeroSomado = 0;
+
+	for(var i = numero.length-1;i>=0; i--){
+		numeroExpoente.push(i);	
+	}
+	
+	for(var i = 0;i<numero.length;i++){
+		numeroSomado += numeroSeparado[i]*8**numeroExpoente[i];
+	}
+
+	return numeroSomado;
+
 }
 
 const octalParaBinario = (numero, nomeDessaFuncao)=>{
