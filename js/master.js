@@ -32,6 +32,7 @@ window.onload = ()=>{
 		if(e.target.value!=''){
 			document.querySelector('#txtNumDecimal').value = binarioParaDecimal((e.target.value));
 			document.querySelector('#txtNumOctal').value = binarioParaOctal((e.target.value));
+			document.querySelector('#txtNumHexadecimal').value = binarioParaHexadecimal((e.target.value));
 		}
 	};
 
@@ -213,7 +214,15 @@ const binarioParaDecimal = (numero)=>{
 }
 
 const binarioParaHexadecimal = (numero, nomeDessaFuncao)=>{
-	console.log(nomeDessaFuncao);
+	var numeroSeparado = separarCasas(numero, 4);
+
+	var indiceLetra;
+
+	numeroSeparado.forEach((numeroAtual, i)=>{
+		var numeroAtualConvertido = binarioParaDecimal(numeroAtual)
+		numeroSeparado[i] = arrayLetras[numeroAtualConvertido];
+	});
+	return numeroSeparado.join('');
 }
 const binarioParaOctal = (numero)=>{
 	var numeroSeparado = separarCasas(numero, 3);
