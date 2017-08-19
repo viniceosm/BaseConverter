@@ -22,6 +22,7 @@ window.onload = ()=>{
 	document.querySelector('#txtNumOctal').oninput = (e)=>{
 		if(e.target.value!=''){
 			document.querySelector('#txtNumDecimal').value = octalParaDecimal((e.target.value));
+			document.querySelector('#txtNumBinario').value = octalParaBinario((e.target.value));
 		}
 	};
 
@@ -159,7 +160,21 @@ const octalParaDecimal = (numero)=>{
 }
 
 const octalParaBinario = (numero, nomeDessaFuncao)=>{
-	console.log(nomeDessaFuncao);
+	var numeroSeparado = numero.split('');
+	var indiceLetra;
+
+	numeroSeparado.forEach((numeroAtual, i)=>{
+		if(isNaN(numeroAtual)){
+			indiceLetra = arrayLetras.join('').indexOf(numeroAtual);
+
+			numeroSeparado[i] = decimalParaBinario(indiceLetra);
+		}else{
+			numeroSeparado[i] = decimalParaBinario(parseInt(numeroAtual));
+		}
+	});
+
+	return numeroSeparado.join('');
+
 }
 
 const octalParaHexadecimal = (numero, nomeDessaFuncao)=>{
