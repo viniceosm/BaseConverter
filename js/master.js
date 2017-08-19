@@ -24,6 +24,7 @@ window.onload = ()=>{
 		if(e.target.value!=''){
 			document.querySelector('#txtNumDecimal').value = octalParaDecimal((e.target.value));
 			document.querySelector('#txtNumBinario').value = octalParaBinario((e.target.value));
+			document.querySelector('#txtNumHexadecimal').value = octalParaHexadecimal((e.target.value));
 		}
 	};
 
@@ -198,7 +199,8 @@ const octalParaBinario = (numero)=>{
 }
 
 const octalParaHexadecimal = (numero, nomeDessaFuncao)=>{
-	console.log(nomeDessaFuncao);
+	var binario = octalParaBinario(numero);
+	return binarioParaHexadecimal(binario);
 }
 
 //ENTRADA BINARIO
