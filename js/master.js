@@ -197,11 +197,7 @@ const binarioParaDecimal = (numero)=>{
 	var numeroSomado = 0;
 
 	for(var i = 0;i<numero.length;i++){
-		console.log("numeroSomado antes: ", numeroSomado);
-		console.log("numeroSeparado: ", numeroSeparado[i]);
-		numeroSomado *= 2+parseInt(numeroSeparado[i]);
-
-		console.log("numeroSomado depois: ", numeroSomado);
+		numeroSomado = numeroSomado*2+parseInt(numeroSeparado[i]);
 	}
 
 	return numeroSomado;
